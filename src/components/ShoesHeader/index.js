@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { RectButton } from 'react-native-gesture-handler';
 import { Header, Icon } from 'react-native-elements';
+import { TouchableOpacity } from 'react-native';
 import colors from '../../styles/colors';
 
-import { Wrapper, Container, Logo, BasketContainer, ItemCount } from './styles';
+import { Logo, BasketContainer, ItemCount } from './styles';
 
 function ShoesHeader() {
     const navigation = useNavigation();
@@ -21,9 +21,9 @@ function ShoesHeader() {
                 justifyContent: 'space-around',
             }}
             leftComponent={() => (
-                <RectButton onPress={() => navigation.navigate('Home')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                     <Logo />
-                </RectButton>
+                </TouchableOpacity>
             )}
             rightComponent={() => (
                 <BasketContainer onPress={() => navigation.navigate('Cart')}>
