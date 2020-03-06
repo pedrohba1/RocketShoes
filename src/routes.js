@@ -3,7 +3,10 @@ import 'react-native-gesture-handler';
 
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+    createStackNavigator,
+    TransitionPresets,
+} from '@react-navigation/stack';
 import colors from './styles/colors';
 
 import Home from './pages/Home';
@@ -18,6 +21,7 @@ function Routes() {
             <Stack.Navigator
                 screenOptions={{
                     header: () => <ShoesHeader />,
+                    ...TransitionPresets.DefaultTransition,
                 }}
             >
                 <Stack.Screen name="Home" component={Home} />
