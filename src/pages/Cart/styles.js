@@ -8,8 +8,6 @@ export const BackgroundContainer = styled.View`
     padding-top: 10px;
 `;
 
-export const Container = styled.View`
-    flex: 1;
-`;
+export const Container = styled.View``;
 
 export const ShoppingList = styled(FlatList)``;

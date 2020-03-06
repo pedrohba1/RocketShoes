@@ -22,6 +22,9 @@ function Routes() {
                 screenOptions={{
                     header: () => <ShoesHeader />,
                     ...TransitionPresets.DefaultTransition,
+                    cardStyle: {
+                        backgroundColor: colors.dark,
+                    },
                 }}
             >
                 <Stack.Screen name="Home" component={Home} />

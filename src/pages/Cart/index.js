@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { Container, ShoppingList, BackgroundContainer } from './styles';
+import { Container, ShoppingList } from './styles';
 
 import CartItem from '../../components/CartItem';
 import CartBottom from '../../components/CartBottom';
@@ -33,17 +32,14 @@ export default class Cart extends Component {
     render() {
         const { products } = this.state;
         return (
-            <BackgroundContainer>
-                <Container>
-                    <ShoppingList
-                        data={products}
-                        renderItem={product => (
-                            <CartItem product={product.item} />
-                        )}
-                        keyExtractor={product => String(product.id)}
-                    />
-                </Container>
-            </BackgroundContainer>
+            <Container>
+                <ShoppingList
+                    data={products}
+                    renderItem={product => <CartItem product={product.item} />}
+                    keyExtractor={product => String(product.id)}
+                />
+                <CartBottom />
+            </Container>
         );
     }
 }

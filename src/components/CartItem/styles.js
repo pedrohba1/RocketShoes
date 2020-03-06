@@ -54,7 +54,7 @@ export const DeleteButton = styled.TouchableOpacity`
 export const ProductAmountContainer = styled.View`
     background: ${colors.gray};
     flex-direction: row;
-    padding: 5px;
+    padding: 5px 20px;
 `;
 
 export const IncreaseButton = styled.TouchableOpacity`
