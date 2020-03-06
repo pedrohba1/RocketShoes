@@ -37,10 +37,10 @@ export const ProductImage = styled.Image.attrs({
 
 export const AddButton = styled(RectButton)`
     background-color: ${colors.primary};
-    width: 100%;
     flex-direction: row;
     height: 50px;
     border-radius: 2px;
+    align-items: center;
 `;
 
 export const ButtonAmountText = styled.Text`
@@ -56,8 +56,8 @@ export const ButtonAmount = styled.View`
 `;
 
 export const ButtonText = styled.Text`
-    padding: 10px 20px;
     margin-left: 10px;
+    padding: 0 30px;
     font-size: 20px;
     color: ${colors.white};
 `;

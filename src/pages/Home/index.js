@@ -16,7 +16,7 @@ export default class Home extends Component {
         const res = await api.get('products');
         const data = res.data.map(product => ({
             ...product,
-            formattedPrice: `R$${formatNumber(product.price)}`,
+            formattedPrice: `R$ ${formatNumber(product.price)}`,
         }));
         this.setState({ products: data });
     }

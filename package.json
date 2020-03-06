@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "start-server": "json-server server.json -p 3333 -w",
+    "listen-emulator": "adb reverse tcp:3333 tcp:3333 && adb reverse tcp:9090 tcp:9090",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
