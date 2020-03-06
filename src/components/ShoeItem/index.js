@@ -1,5 +1,7 @@
 import React from 'react';
 import { Icon } from 'react-native-elements';
+import PropTypes from 'prop-types';
+
 import {
     Container,
     ProductImage,
@@ -27,5 +29,13 @@ function ShoeItem({ product }) {
         </Container>
     );
 }
+
+ShoeItem.propTypes = {
+    product: PropTypes.shape({
+        image: PropTypes.string,
+        title: PropTypes.string,
+        formattedPrice: PropTypes.string,
+    }).isRequired,
+};
 
 export default ShoeItem;

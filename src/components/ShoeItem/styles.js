@@ -46,6 +46,7 @@ export const AddButton = styled(RectButton)`
 export const ButtonAmountText = styled.Text`
     font-size: 20px;
     color: ${colors.white};
+    margin-left: 10px;
 `;
 
 export const ButtonAmount = styled.View`

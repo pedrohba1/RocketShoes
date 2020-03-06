@@ -14,7 +14,6 @@ export default class Home extends Component {
 
     async componentDidMount() {
         const res = await api.get('products');
-        console.log(res);
         const data = res.data.map(product => ({
             ...product,
             formattedPrice: `R$${formatNumber(product.price)}`,
@@ -29,7 +28,7 @@ export default class Home extends Component {
                 <ShoeList
                     data={products}
                     renderItem={product => <ShoeItem product={product.item} />}
-                    keyExtractor={product => product.id}
+                    keyExtractor={product => String(product.id)}
                 />
             </Container>
         );

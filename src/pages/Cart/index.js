@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Container, ShoppingList } from './styles';
 
 export default class Cart extends Component {
-    state = {  }
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
     render() {
-        return (  <Text> Cart </Text>);
+        return (
+            <Container>
+                <ShoppingList />
+            </Container>
+        );
     }
 }
-
-
