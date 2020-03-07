@@ -18,7 +18,7 @@ import {
     AmountInput,
 } from './styles';
 
-export default function CartItem({ product }) {
+export default function CartItem({ product, onDelete }) {
     return (
         <Container>
             <ProductContainer>
@@ -27,7 +27,7 @@ export default function CartItem({ product }) {
                     <ProductName>{product.title}</ProductName>
                     <ProductPrice>{product.formattedPrice}</ProductPrice>
                 </ProductTextContainer>
-                <DeleteButton>
+                <DeleteButton onPress={() => onDelete(product)}>
                     <TrashIcon />
                 </DeleteButton>
             </ProductContainer>
