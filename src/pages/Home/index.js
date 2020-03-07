@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import api from '../../services/api';
 import { ShoeList, Container } from './styles';
 import ShoeItem from '../../components/ShoeItem';
 import formatNumber from '../../utils/format';
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,16 +22,32 @@ export default class Home extends Component {
         this.setState({ products: data });
     }
 
+    handleAddProduct = product => {
+        const { dispatch } = this.props;
+
+        dispatch({
+            type: '@cart/ADD_TO_CART',
+            product,
+        });
+    };
+
     render() {
         const { products } = this.state;
         return (
             <Container>
                 <ShoeList
                     data={products}
-                    renderItem={product => <ShoeItem product={product.item} />}
+                    renderItem={product => (
+                        <ShoeItem
+                            product={product.item}
+                            onAddProduct={this.handleAddProduct}
+                        />
+                    )}
                     keyExtractor={product => String(product.id)}
                 />
             </Container>
         );
     }
 }
+
+export default connect()(Home);

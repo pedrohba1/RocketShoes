@@ -19,8 +19,6 @@ import {
 } from './styles';
 
 export default function CartItem({ product }) {
-    console.tron.log(product);
-
     return (
         <Container>
             <ProductContainer>

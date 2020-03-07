@@ -3,11 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Header, Icon } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 import colors from '../../styles/colors';
 
 import { Logo, BasketContainer, ItemCount } from './styles';
 
-function ShoesHeader() {
+function ShoesHeader({ cartSize }) {
     const navigation = useNavigation();
 
     return (
@@ -28,10 +29,12 @@ function ShoesHeader() {
             rightComponent={() => (
                 <BasketContainer onPress={() => navigation.navigate('Cart')}>
                     <Icon name="shopping-basket" color="#FFF" size={24} />
-                    <ItemCount>{0}</ItemCount>
+                    <ItemCount>{cartSize}</ItemCount>
                 </BasketContainer>
             )}
         />
     );
 }
-export default ShoesHeader;
+export default connect(state => ({
+    cartSize: state.cart.length,
+}))(ShoesHeader);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
-
 import {
     Container,
     ProductImage,
@@ -13,13 +12,13 @@ import {
     ButtonAmount,
 } from './styles';
 
-function ShoeItem({ product }) {
+function ShoeItem({ product, onAddProduct }) {
     return (
         <Container>
             <ProductImage source={{ uri: product.image }} />
             <ProductName> {product.title}</ProductName>
             <ProductPrice> {product.formattedPrice}</ProductPrice>
-            <AddButton>
+            <AddButton onPress={() => onAddProduct(product)}>
                 <ButtonAmount>
                     <Icon name="add-shopping-cart" color="#fff" size={24} />
                     <ButtonAmountText>{0}</ButtonAmountText>
@@ -36,6 +35,7 @@ ShoeItem.propTypes = {
         title: PropTypes.string,
         formattedPrice: PropTypes.string,
     }).isRequired,
+    onAddProduct: PropTypes.func.isRequired,
 };
 
 export default ShoeItem;
