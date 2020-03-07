@@ -44,11 +44,15 @@ export default function CartItem({ product, onDelete }) {
     );
 }
 
+CartItem.defaultProps = {
+    product: [],
+};
+
 CartItem.propTypes = {
     product: PropTypes.shape({
         image: PropTypes.string,
         title: PropTypes.string,
         formattedPrice: PropTypes.string,
         amount: PropTypes.number,
-    }).isRequired,
+    }),
 };
