@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Container, ShoppingList } from './styles';
+import * as CartActions from '../../store/modules/cart/actions';
 
 import CartItem from '../../components/CartItem';
 import CartBottom from '../../components/CartBottom';
 import EmptyCart from '../../components/EmptyCart';
 
-function Cart({ cart, cartSize, dispatch }) {
+function Cart({ cart, cartSize, removeFromCart }) {
     function handleDelete(product) {
-        dispatch({ type: '@cart/REMOVE_FROM_CART', product });
+        removeFromCart(product);
     }
 
     return (
@@ -31,4 +33,7 @@ const mapStateToProps = state => ({
     cartSize: state.cart.length,
 });
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(CartActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
