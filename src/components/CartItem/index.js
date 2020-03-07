@@ -35,7 +35,7 @@ export default function CartItem({ product }) {
                 <DecreaseButton>
                     <DecreaseIcon />
                 </DecreaseButton>
-                <AmountInput> {0}</AmountInput>
+                <AmountInput> {product.amount}</AmountInput>
                 <IncreaseButton>
                     <IncreaseIcon />
                 </IncreaseButton>
@@ -49,5 +49,6 @@ CartItem.propTypes = {
         image: PropTypes.string,
         title: PropTypes.string,
         formattedPrice: PropTypes.string,
+        amount: PropTypes.number,
     }).isRequired,
 };

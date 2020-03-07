@@ -35,6 +35,7 @@ function ShoesHeader({ cartSize }) {
         />
     );
 }
+
 export default connect(state => ({
     cartSize: state.cart.length,
 }))(ShoesHeader);
