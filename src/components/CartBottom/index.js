@@ -8,11 +8,11 @@ import {
     BuyButtonText,
 } from './styles';
 
-export default function CartBottom({ products }) {
+export default function CartBottom({ total }) {
     return (
         <Container>
             <TotalText>TOTAL</TotalText>
-            <TotalPrice>R$ 220,0</TotalPrice>
+            <TotalPrice>{total}</TotalPrice>
             <BuyButton>
                 <BuyButtonText>FINALIZAR PEDIDO</BuyButtonText>
             </BuyButton>
@@ -21,11 +21,5 @@ export default function CartBottom({ products }) {
 }
 
 CartBottom.propTypes = {
-    products: PropTypes.arrayOf(
-        PropTypes.shape({
-            image: PropTypes.string,
-            title: PropTypes.string,
-            formattedPrice: PropTypes.string,
-        }).isRequired
-    ).isRequired,
+    total: PropTypes.string.isRequired,
 };

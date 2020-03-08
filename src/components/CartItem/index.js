@@ -16,9 +16,16 @@ import {
     IncreaseIcon,
     DecreaseIcon,
     AmountInput,
+    SubtotalText,
 } from './styles';
 
-export default function CartItem({ product, onDelete }) {
+export default function CartItem({
+    product,
+    onDelete,
+    onIncrement,
+    onDecrement,
+    subtotal,
+}) {
     return (
         <Container>
             <ProductContainer>
@@ -32,21 +39,18 @@ export default function CartItem({ product, onDelete }) {
                 </DeleteButton>
             </ProductContainer>
             <ProductAmountContainer>
-                <DecreaseButton>
+                <DecreaseButton onPress={() => onDecrement(product)}>
                     <DecreaseIcon />
                 </DecreaseButton>
                 <AmountInput> {product.amount}</AmountInput>
-                <IncreaseButton>
+                <IncreaseButton onPress={() => onIncrement(product)}>
                     <IncreaseIcon />
                 </IncreaseButton>
+                <SubtotalText>{subtotal}</SubtotalText>
             </ProductAmountContainer>
         </Container>
     );
 }
-
-CartItem.defaultProps = {
-    product: [],
-};
 
 CartItem.propTypes = {
     product: PropTypes.shape({
@@ -54,5 +58,9 @@ CartItem.propTypes = {
         title: PropTypes.string,
         formattedPrice: PropTypes.string,
         amount: PropTypes.number,
-    }),
+    }).isRequired,
+    onDelete: PropTypes.func.isRequired,
+    onIncrement: PropTypes.func.isRequired,
+    onDecrement: PropTypes.func.isRequired,
+    subtotal: PropTypes.string.isRequired,
 };

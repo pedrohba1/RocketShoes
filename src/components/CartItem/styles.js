@@ -88,3 +88,12 @@ export const AmountInput = styled.TextInput.attrs({
     border-radius: 4px;
     min-width: 52px;
 `;
+
+export const SubtotalText = styled.Text`
+    flex: 1;
+    font-size: 20px;
+    color: ${colors.fontDark};
+    font-weight: bold;
+    text-align: right;
+    align-self: center;
+`;

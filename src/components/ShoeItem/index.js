@@ -12,7 +12,7 @@ import {
     ButtonAmount,
 } from './styles';
 
-function ShoeItem({ product, onAddProduct }) {
+function ShoeItem({ product, onAddProduct, amount }) {
     return (
         <Container>
             <ProductImage source={{ uri: product.image }} />
@@ -21,13 +21,17 @@ function ShoeItem({ product, onAddProduct }) {
             <AddButton onPress={() => onAddProduct(product)}>
                 <ButtonAmount>
                     <Icon name="add-shopping-cart" color="#fff" size={24} />
-                    <ButtonAmountText>{0}</ButtonAmountText>
+                    <ButtonAmountText>{amount}</ButtonAmountText>
                 </ButtonAmount>
                 <ButtonText>Adicionar ao carrinho</ButtonText>
             </AddButton>
         </Container>
     );
 }
+
+ShoeItem.defaultProps = {
+    amount: 0,
+};
 
 ShoeItem.propTypes = {
     product: PropTypes.shape({
@@ -36,6 +40,7 @@ ShoeItem.propTypes = {
         formattedPrice: PropTypes.string,
     }).isRequired,
     onAddProduct: PropTypes.func.isRequired,
+    amount: PropTypes.number,
 };
 
 export default ShoeItem;
