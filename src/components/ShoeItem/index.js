@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import {
     Container,
@@ -13,12 +14,14 @@ import {
 } from './styles';
 
 function ShoeItem({ product, onAddProduct, amount }) {
+    const navigation = useNavigation();
+
     return (
         <Container>
             <ProductImage source={{ uri: product.image }} />
             <ProductName> {product.title}</ProductName>
             <ProductPrice> {product.formattedPrice}</ProductPrice>
-            <AddButton onPress={() => onAddProduct(product.id)}>
+            <AddButton onPress={() => onAddProduct(product.id, navigation)}>
                 <ButtonAmount>
                     <Icon name="add-shopping-cart" color="#fff" size={24} />
                     <ButtonAmountText>{amount}</ButtonAmountText>

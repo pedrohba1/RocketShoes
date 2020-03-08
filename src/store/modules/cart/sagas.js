@@ -5,7 +5,7 @@ import formatPrice from '../../../utils/format';
 
 import { addToCartSuccess, updateAmountSuccess } from './actions';
 
-function* addToCart({ id }) {
+function* addToCart({ id, navigation }) {
     const productExists = yield select(state =>
         state.cart.find(p => p.id === id)
     );
@@ -31,7 +31,9 @@ function* addToCart({ id }) {
             amount: 1,
             priceFormatted: formatPrice(response.data.price),
         };
-
+        // o redirecionamento para o carrinho só acontece quando o
+        // item é adicionado pela primeira vez
+        yield call(navigation.navigate, 'Cart');
         yield put(addToCartSuccess(data));
     }
 }

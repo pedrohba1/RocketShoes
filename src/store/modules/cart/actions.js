@@ -1,9 +1,10 @@
 // actions iniciando com o nome do módulo
 
-export function addToCartRequest(id) {
+export function addToCartRequest(id, navigation) {
     return {
         type: '@cart/ADD_TO_CART_REQUEST',
         id,
+        navigation,
     };
 }
 

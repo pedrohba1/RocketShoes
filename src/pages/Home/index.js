@@ -25,9 +25,9 @@ class Home extends Component {
         this.setState({ products: data });
     }
 
-    handleAddProduct = id => {
+    handleAddProduct = (id, navigation) => {
         const { addToCartRequest } = this.props;
-        addToCartRequest(id);
+        addToCartRequest(id, navigation);
     };
 
     render() {
