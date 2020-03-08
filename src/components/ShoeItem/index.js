@@ -18,7 +18,7 @@ function ShoeItem({ product, onAddProduct, amount }) {
             <ProductImage source={{ uri: product.image }} />
             <ProductName> {product.title}</ProductName>
             <ProductPrice> {product.formattedPrice}</ProductPrice>
-            <AddButton onPress={() => onAddProduct(product)}>
+            <AddButton onPress={() => onAddProduct(product.id)}>
                 <ButtonAmount>
                     <Icon name="add-shopping-cart" color="#fff" size={24} />
                     <ButtonAmountText>{amount}</ButtonAmountText>
@@ -35,8 +35,9 @@ ShoeItem.defaultProps = {
 
 ShoeItem.propTypes = {
     product: PropTypes.shape({
-        image: PropTypes.string,
-        title: PropTypes.string,
+        id: PropTypes.number.isRequired,
+        image: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
         formattedPrice: PropTypes.string,
     }).isRequired,
     onAddProduct: PropTypes.func.isRequired,

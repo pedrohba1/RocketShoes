@@ -1,8 +1,15 @@
 // actions iniciando com o nome do módulo
 
-export function addToCart(product) {
+export function addToCartRequest(id) {
     return {
-        type: '@cart/ADD_TO_CART',
+        type: '@cart/ADD_TO_CART_REQUEST',
+        id,
+    };
+}
+
+export function addToCartSuccess(product) {
+    return {
+        type: '@cart/ADD_TO_CART_SUCCESS',
         product,
     };
 }
