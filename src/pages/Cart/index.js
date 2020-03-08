@@ -10,17 +10,17 @@ import CartItem from '../../components/CartItem';
 import CartBottom from '../../components/CartBottom';
 import EmptyCart from '../../components/EmptyCart';
 
-function Cart({ cart, cartSize, removeFromCart, updateAmount, total }) {
+function Cart({ cart, cartSize, removeFromCart, updateAmountRequest, total }) {
     function handleDelete(product) {
         removeFromCart(product);
     }
 
     function handleIncrement(product) {
-        updateAmount(product, product.amount + 1);
+        updateAmountRequest(product, product.amount + 1);
     }
 
     function handleDecrement(product) {
-        updateAmount(product, product.amount - 1);
+        updateAmountRequest(product, product.amount - 1);
     }
 
     console.tron.log(cart);
@@ -65,7 +65,7 @@ Cart.propTypes = {
     total: PropTypes.string.isRequired,
     cartSize: PropTypes.number,
     removeFromCart: PropTypes.func.isRequired,
-    updateAmount: PropTypes.func.isRequired,
+    updateAmountRequest: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
