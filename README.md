@@ -10,6 +10,9 @@
 
 O objetivo desse projeto era utilizar a arquitetura flux e refazer a interface web do RocketShoes em mobile usando react-native. Prints de exemplo:
 
+![img](https://github.com/pedrohba1/RocketShoes/blob/master/readme_stuff/image1.PNG)
+![img](https://github.com/pedrohba1/RocketShoes/blob/master/readme_stuff/image2.png)
+
 ## Getting Started <a name = "getting_started"></a>
 
 Execute o json server com `json-server server.json -p 3333 -w`
