@@ -1,16 +1,16 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-
 import { Header, Icon } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import colors from '../../styles/colors';
 
 import { Logo, BasketContainer, ItemCount } from './styles';
 
-function ShoesHeader({ cartSize }) {
+export default function ShoesHeader() {
     const navigation = useNavigation();
+    const cartSize = useSelector(state => state.cart.length);
 
     return (
         <Header
@@ -44,7 +44,3 @@ ShoesHeader.defaultProps = {
 ShoesHeader.propTypes = {
     cartSize: PropTypes.number,
 };
-
-export default connect(state => ({
-    cartSize: state.cart.length,
-}))(ShoesHeader);

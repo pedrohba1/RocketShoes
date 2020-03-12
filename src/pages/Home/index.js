@@ -1,76 +1,53 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import api from '../../services/api';
 import { ShoeList, Container } from './styles';
 import ShoeItem from '../../components/ShoeItem';
 import formatNumber from '../../utils/format';
 import * as CartActions from '../../store/modules/cart/actions';
 
-class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            products: [],
-        };
+export default function Home() {
+    const [products, setProducts] = useState([]);
+
+    const amount = useSelector(state =>
+        state.cart.reduce((sumAmount, product) => {
+            sumAmount[product.id] = product.amount;
+            return sumAmount;
+        }, {})
+    );
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        async function loadProducts() {
+            const res = await api.get('products');
+            const data = res.data.map(product => ({
+                ...product,
+                // para o render não ficar atualizando múltiplas vezes, eu já coloco direto o preço formatado no objeto do produto.
+                priceFormatted: formatNumber(product.price),
+            }));
+            setProducts(data);
+        }
+        loadProducts();
+    }, []);
+
+    function handleAddProduct(id, navigation) {
+        dispatch(CartActions.addToCartRequest(id, navigation));
     }
 
-    async componentDidMount() {
-        const res = await api.get('products');
-        const data = res.data.map(product => ({
-            ...product,
-            formattedPrice: `R$ ${formatNumber(product.price)}`,
-        }));
-        this.setState({ products: data });
-    }
-
-    handleAddProduct = (id, navigation) => {
-        const { addToCartRequest } = this.props;
-        addToCartRequest(id, navigation);
-    };
-
-    render() {
-        const { products } = this.state;
-        const { amount } = this.props;
-
-        return (
-            <Container>
-                <ShoeList
-                    data={products}
-                    renderItem={product => (
-                        <ShoeItem
-                            product={product.item}
-                            onAddProduct={this.handleAddProduct}
-                            amount={amount[product.item.id]}
-                        />
-                    )}
-                    keyExtractor={product => String(product.id)}
-                />
-            </Container>
-        );
-    }
+    return (
+        <Container>
+            <ShoeList
+                data={products}
+                renderItem={product => (
+                    <ShoeItem
+                        product={product.item}
+                        onAddProduct={handleAddProduct}
+                        amount={amount[product.item.id]}
+                    />
+                )}
+                keyExtractor={product => String(product.id)}
+            />
+        </Container>
+    );
 }
-
-Home.defaultProps = {
-    amount: {},
-};
-
-Home.propTypes = {
-    addToCartRequest: PropTypes.func.isRequired,
-    amount: PropTypes.shape({
-        id: PropTypes.number,
-    }),
-};
-
-const mapStateToProps = state => ({
-    amount: state.cart.reduce((amount, product) => {
-        amount[product.id] = product.amount;
-        return amount;
-    }, {}),
-});
-
-const mapDispatchToProps = dispatch =>
-    bindActionCreators(CartActions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);

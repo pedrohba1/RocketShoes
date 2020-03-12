@@ -44,7 +44,7 @@ export const AddButton = styled(RectButton)`
 `;
 
 export const ButtonAmountText = styled.Text`
-    font-size: 20px;
+    font-size: 15px;
     color: ${colors.white};
     margin-left: 10px;
 `;
@@ -56,8 +56,8 @@ export const ButtonAmount = styled.View`
 `;
 
 export const ButtonText = styled.Text`
-    margin-left: 10px;
-    padding: 0 30px;
-    font-size: 20px;
+    font-size: 18px;
+    margin: auto;
+    align-self: center;
     color: ${colors.white};
 `;
