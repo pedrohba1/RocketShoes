@@ -1,7 +1,5 @@
 import React from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, ShoppingList } from './styles';
 import * as CartActions from '../../store/modules/cart/actions';
 import formatPrice from '../../utils/format';

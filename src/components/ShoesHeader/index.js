@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native';
 import { Header, Icon } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import colors from '../../styles/colors';
 
 import { Logo, BasketContainer, ItemCount } from './styles';
@@ -39,8 +38,4 @@ export default function ShoesHeader() {
 
 ShoesHeader.defaultProps = {
     cartSize: 0,
-};
-
-ShoesHeader.propTypes = {
-    cartSize: PropTypes.number,
 };
