@@ -20,7 +20,7 @@ function ShoeItem({ product, onAddProduct, amount }) {
         <Container>
             <ProductImage source={{ uri: product.image }} />
             <ProductName> {product.title}</ProductName>
-            <ProductPrice> {product.formattedPrice}</ProductPrice>
+            <ProductPrice>R$ {product.priceFormatted}</ProductPrice>
             <AddButton onPress={() => onAddProduct(product.id, navigation)}>
                 <ButtonAmount>
                     <Icon name="add-shopping-cart" color="#fff" size={24} />
@@ -41,7 +41,7 @@ ShoeItem.propTypes = {
         id: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        formattedPrice: PropTypes.string,
+        priceFormatted: PropTypes.string,
     }).isRequired,
     onAddProduct: PropTypes.func.isRequired,
     amount: PropTypes.number,

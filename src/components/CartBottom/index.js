@@ -12,7 +12,7 @@ export default function CartBottom({ total }) {
     return (
         <Container>
             <TotalText>TOTAL</TotalText>
-            <TotalPrice>{total}</TotalPrice>
+            <TotalPrice>R$ {total}</TotalPrice>
             <BuyButton>
                 <BuyButtonText>FINALIZAR PEDIDO</BuyButtonText>
             </BuyButton>

@@ -32,7 +32,7 @@ export default function CartItem({
                 <ProductImage source={{ uri: product.image }} />
                 <ProductTextContainer>
                     <ProductName>{product.title}</ProductName>
-                    <ProductPrice>{product.formattedPrice}</ProductPrice>
+                    <ProductPrice>R$ {product.priceFormatted}</ProductPrice>
                 </ProductTextContainer>
                 <DeleteButton onPress={() => onDelete(product)}>
                     <TrashIcon />
@@ -56,7 +56,7 @@ CartItem.propTypes = {
     product: PropTypes.shape({
         image: PropTypes.string,
         title: PropTypes.string,
-        formattedPrice: PropTypes.string,
+        priceFormatted: PropTypes.string,
         amount: PropTypes.number,
     }).isRequired,
     onDelete: PropTypes.func.isRequired,
